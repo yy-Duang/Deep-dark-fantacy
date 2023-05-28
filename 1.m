@@ -21,6 +21,10 @@ feature_std = std(table2array(features));
 % 归一化特征
 normalized_features = (table2array(features) - feature_mean) ./ feature_std;
 
+% 划分训练集和测试集
+train_ratio = 0.8; % 训练集所占比例
+train_size = floor(size(normalized_features, 1) * train_ratio);
+
 % 构建神经网络模型
 hidden_units = 20;
 net = feedforwardnet(hidden_units);
